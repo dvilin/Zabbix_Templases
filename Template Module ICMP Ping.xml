@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2022-02-16T14:53:06Z</date>
+    <groups>
+        <group>
+            <uuid>57b7ae836ca64446ba2c296389c009b7</uuid>
+            <name>Templates/Modules</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>376c8911d6c44bf9b66c8bce3b0134c8</uuid>
+            <template>Template Module ICMP Ping</template>
+            <name>Template Module ICMP Ping</name>
+            <description>Template Module ICMP Ping
+
+Template tooling version used: 0.41</description>
+            <groups>
+                <group>
+                    <name>Templates/Modules</name>
+                </group>
+            </groups>
+            <macros>
+                <macro>
+                    <macro>{$ICMP_LOSS_WARN}</macro>
+                    <value>20</value>
+                </macro>
+                <macro>
+                    <macro>{$ICMP_RESPONSE_TIME_WARN}</macro>
+                    <value>0.15</value>
+                </macro>
+            </macros>
+            <valuemaps>
+                <valuemap>
+                    <uuid>c527ea88eb414e91b89b798ed301433b</uuid>
+                    <name>Service state</name>
+                    <mappings>
+                        <mapping>
+                            <value>0</value>
+                            <newvalue>Down</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Up</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+            </valuemaps>
+        </template>
+    </templates>
+</zabbix_export>

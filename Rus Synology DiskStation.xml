@@ -1,0 +1,1947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2022-02-21T11:40:37Z</date>
+    <groups>
+        <group>
+            <uuid>8446028a319841f6877192936cc415b7</uuid>
+            <name>Group NAS</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>23c72497b8d646ad90bf7a0740e0c186</uuid>
+            <template>Rus Synology DiskStation</template>
+            <name>Rus Synology DiskStation</name>
+            <description>Стандартный шаблон с переименованными триггерами</description>
+            <templates>
+                <template>
+                    <name>Template Module ICMP Ping</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>Group NAS</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>27de465cef1047b69d710a98b94bd718</uuid>
+                    <name>CPU Fan Status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.4.2.0</snmp_oid>
+                    <key>synoSystem.cpuFanStatus</key>
+                    <description>Returns error if CPU fan fails.</description>
+                    <valuemap>
+                        <name>SYNOLOGY-SYSTEM-MIB::systemStatus</name>
+                    </valuemap>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>CPU</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>c376b59ea8254415963ba94c0b5e7b28</uuid>
+                            <expression>last(/Rus Synology DiskStation/synoSystem.cpuFanStatus)&lt;&gt;1</expression>
+                            <name>Критическая скорость кулера ЦП  на {HOST.NAME}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>3d058f51486b4d8cb53833f99412ff27</uuid>
+                    <name>Load Avg 1 min</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.10.1.5.1</snmp_oid>
+                    <key>synoSystem.laLoadInt.1</key>
+                    <value_type>FLOAT</value_type>
+                    <description>1 minute load.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>CPU</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>324f6183055646e5a27f7ff6c390336c</uuid>
+                    <name>Load Avg 5 min</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.10.1.5.2</snmp_oid>
+                    <key>synoSystem.laLoadInt.2</key>
+                    <value_type>FLOAT</value_type>
+                    <description>5 minute load.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>CPU</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>8f213559058f4de38c347bf65a4c5b0c</uuid>
+                    <name>Load Avg 15 min</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.10.1.5.3</snmp_oid>
+                    <key>synoSystem.laLoadInt.3</key>
+                    <value_type>FLOAT</value_type>
+                    <description>15 minute load.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>CPU</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>c1a9a20071584c8abd9bb7b9993fb2ce</uuid>
+                    <name>Model Name</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.5.1.0</snmp_oid>
+                    <key>synoSystem.modelName</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Model name of this NAS.</description>
+                    <inventory_link>MODEL</inventory_link>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Information</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>df13ecf6fccc494ab05eb850100f73ee</uuid>
+                    <name>Power Status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.3.0</snmp_oid>
+                    <key>synoSystem.powerStatus</key>
+                    <description>Returns error if power supplies fail</description>
+                    <valuemap>
+                        <name>SYNOLOGY-SYSTEM-MIB::powerStatus</name>
+                    </valuemap>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>d891556156414868a096b899513d30cf</uuid>
+                            <expression>last(/Rus Synology DiskStation/synoSystem.powerStatus)&lt;&gt;1</expression>
+                            <name>Состояние питания НЕИСПРАВНО на {HOST.NAME}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>7a9c633f82b742449c04a386320170e8</uuid>
+                    <name>Serial Number</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.5.2.0</snmp_oid>
+                    <key>synoSystem.serialNumber</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Model serial number</description>
+                    <inventory_link>SERIALNO_A</inventory_link>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Information</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>7805576325bb479086dea34e84b06188</uuid>
+                    <name>CPU Idle</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.11.11.0</snmp_oid>
+                    <key>synoSystem.ssCpuIdle</key>
+                    <units>%</units>
+                    <description>The percentage of processor time spent idle, calculated over the last minute.</description>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>CPU</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>241feffeef524050922fbfb4e6d1cbef</uuid>
+                            <expression>avg(/Rus Synology DiskStation/synoSystem.ssCpuIdle,5m)&lt;30</expression>
+                            <name>Высокая загрузка ЦП на {HOST.NAME}</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>e8f011cb5264499eb17fadb8330bf707</uuid>
+                            <expression>avg(/Rus Synology DiskStation/synoSystem.ssCpuIdle,5m)&lt;10</expression>
+                            <name>Загрузка ЦП очень высокая {HOST.NAME}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>5def2a5e143443189da1b9c14fd4b931</uuid>
+                    <name>CPU System</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.11.10.0</snmp_oid>
+                    <key>synoSystem.ssCpuSystem</key>
+                    <units>%</units>
+                    <description>The percentage of CPU time spent processing system-level code, calculated over the last minute.</description>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>CPU</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>bd59c44267a64d7bb0f05c3511caa2d3</uuid>
+                    <name>CPU User</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.11.9.0</snmp_oid>
+                    <key>synoSystem.ssCpuUser</key>
+                    <units>%</units>
+                    <description>The percentage of CPU time spent processing user-level code.</description>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>CPU</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>d4f969b0bc70419ebf722997deb9b263</uuid>
+                    <name>System Fan Status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.4.1.0</snmp_oid>
+                    <key>synoSystem.systemFanStatus</key>
+                    <description>Returns error if system fan fails.</description>
+                    <valuemap>
+                        <name>SYNOLOGY-SYSTEM-MIB::systemStatus</name>
+                    </valuemap>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>b791be012ac24883971181234450e394</uuid>
+                            <expression>last(/Rus Synology DiskStation/synoSystem.systemFanStatus)&lt;&gt;1</expression>
+                            <name>Состояние системного вентилятора КРИТИЧЕСКИЙ на {HOST.NAME}</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>22db1a23ffc34c97b9a81fa2e285e4b3</uuid>
+                    <name>System Status</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.1.0</snmp_oid>
+                    <key>synoSystem.systemStatus</key>
+                    <description>System partition status.</description>
+                    <valuemap>
+                        <name>SYNOLOGY-SYSTEM-MIB::systemStatus</name>
+                    </valuemap>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>ed08172c092d4a9eb6e59ace3e7f435c</uuid>
+                            <expression>last(/Rus Synology DiskStation/synoSystem.systemStatus)&lt;&gt;1</expression>
+                            <name>Системный раздел в критическом состоянии {HOST.NAME}</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>753f4a238d404d18ab002141a7685f08</uuid>
+                    <name>System Temperature</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.2.0</snmp_oid>
+                    <key>synoSystem.temperature</key>
+                    <delay>3m</delay>
+                    <units>C</units>
+                    <description>Temperature of this NAS.</description>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>0922bdc084f44428bdc4af8fa815692d</uuid>
+                            <expression>avg(/Rus Synology DiskStation/synoSystem.temperature,#4)&gt;60</expression>
+                            <name>Температура системы КРИТИЧЕСКАЯ {HOST.NAME}</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>39b2385d140e48eba87896f85145ff41</uuid>
+                    <name>Upgrade Available</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.5.4.0</snmp_oid>
+                    <key>synoSystem.upgradeAvailable</key>
+                    <delay>1h</delay>
+                    <description>Checks whether a new version or update of DSM is available</description>
+                    <valuemap>
+                        <name>SYNOLOGY-SYSTEM-MIB::upgradeAvailable</name>
+                    </valuemap>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Information</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>f58c126d166b478581f7cf9d2d90c3db</uuid>
+                            <expression>last(/Rus Synology DiskStation/synoSystem.upgradeAvailable)=1</expression>
+                            <name>Доступно обновление {HOST.NAME}</name>
+                            <priority>INFO</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>882b071c2c0548deb1802759e8f365d4</uuid>
+                    <name>Version</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.6574.1.5.3.0</snmp_oid>
+                    <key>synoSystem.version</key>
+                    <delay>1h</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>The version of DSM</description>
+                    <inventory_link>OS</inventory_link>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Synology System</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Information</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>fbd86813df5045d0a5f588597c8fb76d</uuid>
+                    <name>Total Physical Available</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.6.0</snmp_oid>
+                    <key>ucdavis.memory.memAvailReal</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The amount of real/physical memory currently unused or available.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>a0ab990e1cec4f2e80e1cc4008842b37</uuid>
+                    <name>Total Swap Available</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.4.0</snmp_oid>
+                    <key>ucdavis.memory.memAvailSwap</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The amount of swap space currently unused or available.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>c738f2780fbc4bfb8f73642ee2d6e5a5</uuid>
+                    <name>Total Buffer Memory</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.14.0</snmp_oid>
+                    <key>ucdavis.memory.memBuffer</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The total amount of real or virtual memory currently allocated for use as memory buffers.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>24846ebae386418dad6b25792fc085d7</uuid>
+                    <name>Total Cached Memory</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.15.0</snmp_oid>
+                    <key>ucdavis.memory.memCached</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The total amount of real or virtual memory currently allocated for use as cached memory.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>86a11c6d751e4005b6982e9d761a7f62</uuid>
+                    <name>Total Shared Memory</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.13.0</snmp_oid>
+                    <key>ucdavis.memory.memShared</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The total amount of real or virtual memory currently allocated for use as shared memory.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>3d8c117d377747b9a52a9de6ff49b967</uuid>
+                    <name>Total Free Memory</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.11.0</snmp_oid>
+                    <key>ucdavis.memory.memTotalFree</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The total amount of memory free or available for use on this host.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>3a73d95e462a49d59a43ad08e2142465</uuid>
+                    <name>Total Physical Memory</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.5.0</snmp_oid>
+                    <key>ucdavis.memory.memTotalReal</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The total amount of real/physical memory installed on this host.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>6bef6064cc4149f8a6274dbca6a7b805</uuid>
+                    <name>Total Swap Space</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.3.0</snmp_oid>
+                    <key>ucdavis.memory.memTotalSwap</key>
+                    <delay>3m</delay>
+                    <units>B</units>
+                    <description>The total amount of swap space configured for this host.</description>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Memory</value>
+                        </tag>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Health</value>
+                        </tag>
+                    </tags>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <uuid>882c8f12d1394aa593e400311a995dde</uuid>
+                    <name>Disk</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#IFINDEX},.1.3.6.1.2.1.25.2.3.1.1,{#IFDESCR},.1.3.6.1.2.1.25.2.3.1.3,{#IFUNIT},.1.3.6.1.2.1.25.2.3.1.4]</snmp_oid>
+                    <key>host.hrStorage.hrStorageTable.hrStorageEntry</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#IFDESCR}</macro>
+                                <value>/volume</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>88d7335bb5fb4308b97235923d9d1c45</uuid>
+                            <name>Storage Size on {#IFDESCR}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.3.1.5.{#IFINDEX}</snmp_oid>
+                            <key>host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageSize[{#IFINDEX}]</key>
+                            <delay>3m</delay>
+                            <units>B</units>
+                            <description>The size of the storage represented by this entry, in units of hrStorageAllocationUnits.</description>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>4096</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Disk</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>cf5711db52f4416caa8359b7452efa85</uuid>
+                            <name>Storage Used on {#IFDESCR} (%)</name>
+                            <type>CALCULATED</type>
+                            <key>host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageUsed[{#IFINDEX},pct]</key>
+                            <delay>5m</delay>
+                            <units>%</units>
+                            <params>last(//host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageUsed[{#IFINDEX}])/last(//host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageSize[{#IFINDEX}])*100</params>
+                            <description>% of disk space used.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Disk</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>8d7ac6e4b5b44809bf0ae587fcdb3e00</uuid>
+                                    <expression>last(/Rus Synology DiskStation/host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageUsed[{#IFINDEX},pct])&gt;{$DISK_UTIL_WARN}</expression>
+                                    <name>Мало места на диске мало {#IFDESCR}</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <uuid>410d2c7ae2ef4caa90ba35f5fafdb48d</uuid>
+                                    <expression>last(/Rus Synology DiskStation/host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageUsed[{#IFINDEX},pct])&gt;{$DISK_UTIL_HIGH}</expression>
+                                    <name>НЕТ места на диске  {#IFDESCR}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>ea5dce5e4e3a4a9aa261491ed89775d5</uuid>
+                            <name>Storage Used on {#IFDESCR}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.2.1.25.2.3.1.6.{#IFINDEX}</snmp_oid>
+                            <key>host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageUsed[{#IFINDEX}]</key>
+                            <delay>3m</delay>
+                            <units>B</units>
+                            <description>The amount of the storage represented by this entry.</description>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>4096</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Disk</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>53b3469649574b48a649c3c5e07117e7</uuid>
+                            <name>Disk: Storage Evolution on {#IFDESCR}</name>
+                            <height>300</height>
+                            <graph_items>
+                                <graph_item>
+                                    <color>000000</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageSize[{#IFINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>FILLED_REGION</drawtype>
+                                    <color>0000EE</color>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageUsed[{#IFINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                        <graph_prototype>
+                            <uuid>324c1a04258c4c8cad7c472f1f15f42b</uuid>
+                            <name>Disk: Storage Utilization on {#IFDESCR}</name>
+                            <width>600</width>
+                            <height>340</height>
+                            <yaxismax>0</yaxismax>
+                            <show_work_period>NO</show_work_period>
+                            <show_triggers>NO</show_triggers>
+                            <type>PIE</type>
+                            <show_3d>YES</show_3d>
+                            <graph_items>
+                                <graph_item>
+                                    <color>5B5B5B</color>
+                                    <calc_fnc>LAST</calc_fnc>
+                                    <type>GRAPH_SUM</type>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageSize[{#IFINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>AEEE00</color>
+                                    <calc_fnc>LAST</calc_fnc>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>host.hrStorage.hrStorageTable.hrStorageEntry.hrStorageUsed[{#IFINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>f64d354a85ca46ee94d76effb3a0be46</uuid>
+                    <name>Network</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#IFALIAS},1.3.6.1.2.1.31.1.1.1.18,{#IFNAME},1.3.6.1.2.1.31.1.1.1.1]</snmp_oid>
+                    <key>ifMIB.ifMIBObjects.ifXTable.ifXEntry</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#IFNAME}</macro>
+                                <value>eth</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>55433155e81a418cb29b9c690a5d0491</uuid>
+                            <name>Incomming Packets on Interface {#IFNAME}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.2.1.31.1.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>ifMIB.ifMIBObjects.ifXTable.ifXEntry.ifHCInOctets.[{#IFNAME}]</key>
+                            <delay>3m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>bps</units>
+                            <description>The total number of octets received on the interface.</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>8</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>e8de2f0e63ad4d758f22a195a4175b78</uuid>
+                            <name>Outgoing Packets on Interface {#IFNAME}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.2.1.31.1.1.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>ifMIB.ifMIBObjects.ifXTable.ifXEntry.ifHCOutOctets.[{#IFNAME}]</key>
+                            <delay>3m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>bps</units>
+                            <description>The total number of octets transmitted out of the interface.</description>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>8</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>1615a291310546698d405260e5ca1492</uuid>
+                            <name>Network: Traffic on Interface {#IFNAME}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>GRADIENT_LINE</drawtype>
+                                    <color>00AA00</color>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>ifMIB.ifMIBObjects.ifXTable.ifXEntry.ifHCInOctets.[{#IFNAME}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>GRADIENT_LINE</drawtype>
+                                    <color>3333FF</color>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>ifMIB.ifMIBObjects.ifXTable.ifXEntry.ifHCOutOctets.[{#IFNAME}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>f9076b7aa85342aabf4db01c8800fda2</uuid>
+                    <name>Synology SpaceIO</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.6574.102.1.1.2]</snmp_oid>
+                    <key>spaceIO.spaceIOTable.spaceIOEntry</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#SNMPVALUE}</macro>
+                                <value>sd</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <description>An entry containing a device and its statistics.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>4574eadec3dc43af86d756a3286734fb</uuid>
+                            <name>Space Load of Disk {#SNMPVALUE}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.102.1.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>spaceIO.spaceIOTable.spaceIOEntry.spaceIOLA.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <description>The load of disk in the volume (%).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Spaceio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>30f7351c90f54e19b24089e06692afa6</uuid>
+                            <name>{#SNMPVALUE} byte(s) read since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.102.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>spaceIO.spaceIOTable.spaceIOEntry.spaceIONRead.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>byte(s)</units>
+                            <description>The number of bytes read from this volume since boot (32-bit ver.).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Spaceio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>6042a97bd1a3411d9e16797f8efc4812</uuid>
+                            <name>{#SNMPVALUE} read access(es) since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.102.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>spaceIO.spaceIOTable.spaceIOEntry.spaceIONReads.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>byte(s)</units>
+                            <description>The number of read accesses from this volume since boot.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Spaceio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>f66c133715d34c8d81a7b0945e258b02</uuid>
+                            <name>{#SNMPVALUE} write accesses since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.102.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>spaceIO.spaceIOTable.spaceIOEntry.spaceIONWrites.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>byte(s)</units>
+                            <description>The number of write accesses to this volume since boot (32-bit ver.).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Spaceio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>4cbec0953c7b4e6590c39922a9e3fdb4</uuid>
+                            <name>{#SNMPVALUE} byte(s) written since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.102.1.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>spaceIO.spaceIOTable.spaceIOEntry.spaceIONWritten.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>byte(s)</units>
+                            <description>The number of bytes written to this volume since boot (32-bit ver.).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Spaceio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>f073336a62714d0496774d7094719448</uuid>
+                            <name>SpaceIO: Load on Disk {#SNMPVALUE} (in %)</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>EE00EE</color>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>spaceIO.spaceIOTable.spaceIOEntry.spaceIOLA.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>3c6ecf48282a4b9da5f56670ac770ccd</uuid>
+                    <name>Synology StorageIO</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.6574.101.1.1.2]</snmp_oid>
+                    <key>storageIO.storageIOTable.storageIOEntry</key>
+                    <delay>1h</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#SNMPVALUE}</macro>
+                                <value>sd</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <description>An entry containing a device and its statistics.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>098e76bb02be4156806c4889bf0723a9</uuid>
+                            <name>Storage Load on Disk {#SNMPVALUE}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.101.1.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>storageIO.storageIOTable.storageIOEntry.storageIOLA.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <units>%</units>
+                            <description>The load of disk (in %).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Storageio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>964804a4353d4270a25e1749fc054903</uuid>
+                            <name>{#SNMPVALUE} byte(s) read since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.101.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>storageIO.storageIOTable.storageIOEntry.storageIONRead.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>byte(s)</units>
+                            <description>The number of bytes read from this device since boot (32-bit VER.).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Storageio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>442be3a22a7a4cf6b6a86bb2f748c875</uuid>
+                            <name>{#SNMPVALUE} byte(s) written since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.101.1.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>storageIO.storageIOTable.storageIOEntry.storageIONWritten.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>byte(s)</units>
+                            <description>The number of bytes written to this device since boot (32-bit VER.).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Storageio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>360c6db137dd4f5b9a12c5696a07e0dd</uuid>
+                            <name>{#SNMPVALUE} read access(es) since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.101.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>storageIO.storageIOTable.storageIOEntry.storageIOReads.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>access(es)</units>
+                            <description>The number of read accesses from this device since boot (32-bit VER.).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Storageio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>38dcfe8124704310b70af781d90598ad</uuid>
+                            <name>{#SNMPVALUE} write access(es) since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.101.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>storageIO.storageIOTable.storageIOEntry.storageIOWrites.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <status>DISABLED</status>
+                            <units>access(es)</units>
+                            <description>The number of write accesses from this device since boot (32-bit VER.).</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Storageio</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>922306759fc045178139ca3f5b6fe89b</uuid>
+                            <name>StorageIO: Load on Disk {#SNMPVALUE}</name>
+                            <show_work_period>NO</show_work_period>
+                            <show_triggers>NO</show_triggers>
+                            <ymin_type_1>ITEM</ymin_type_1>
+                            <ymin_item_1>
+                                <host>Rus Synology DiskStation</host>
+                                <key>storageIO.storageIOTable.storageIOEntry.storageIOLA.[{#SNMPINDEX}]</key>
+                            </ymin_item_1>
+                            <ymax_type_1>ITEM</ymax_type_1>
+                            <ymax_item_1>
+                                <host>Rus Synology DiskStation</host>
+                                <key>storageIO.storageIOTable.storageIOEntry.storageIOLA.[{#SNMPINDEX}]</key>
+                            </ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>0000EE</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <type>GRAPH_SUM</type>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>storageIO.storageIOTable.storageIOEntry.storageIOLA.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>667d018d2ea941e9a29a5856af6a9eb9</uuid>
+                    <name>Synology Disk(s)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.6574.2.1.1.2]</snmp_oid>
+                    <key>synoDisk.diskTable.diskEntry</key>
+                    <delay>1h</delay>
+                    <description>For all disk entry.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>8d8dd79307c04518a19a164507fdac5c</uuid>
+                            <name>{#SNMPVALUE} Model</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.2.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>synoDisk.diskTable.diskEntry.diskModel.[{#SNMPINDEX}]</key>
+                            <delay>1d</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <description>Synology disk model name: the disk model name will be showed here.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Disk</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>5aa70edd984f42f384148304354056d0</uuid>
+                                    <expression>(last(/Rus Synology DiskStation/synoDisk.diskTable.diskEntry.diskModel.[{#SNMPINDEX}],#1)&lt;&gt;last(/Rus Synology DiskStation/synoDisk.diskTable.diskEntry.diskModel.[{#SNMPINDEX}],#2))&gt;0</expression>
+                                    <name>{#SNMPVALUE} was changed</name>
+                                    <priority>INFO</priority>
+                                    <description>Disk was changed</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>dc7657205e7e4c3a884d461d2106f779</uuid>
+                            <name>{#SNMPVALUE} Status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.2.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>synoDisk.diskTable.diskEntry.diskStatus.[{#SNMPINDEX}]</key>
+                            <description>Synology disk status: each meanings of status represented describe below:
+[1] Normal: the hard disk functions normally.
+[2] Initialized: the hard disk has system partition but no data.
+[3] NotInitialized: the hard disk does not have system in system partition.	
+[4] SystemPartitionFailed: the system partitions on the hard disks are damaged.
+[5] Crashed: the hard disk has damaged.</description>
+                            <valuemap>
+                                <name>SYNOLOGY-DISK-MIB::diskStatus</name>
+                            </valuemap>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Disk</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>42706ae3d0784f7a8647da128a49e062</uuid>
+                                    <expression>last(/Rus Synology DiskStation/synoDisk.diskTable.diskEntry.diskStatus.[{#SNMPINDEX}])=5</expression>
+                                    <name>{#SNMPVALUE} disk damaged</name>
+                                    <priority>HIGH</priority>
+                                    <description>The disk is damaged</description>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <uuid>cfbfc8ab2f5d49f4b5d0428a596f5e21</uuid>
+                                    <expression>last(/Rus Synology DiskStation/synoDisk.diskTable.diskEntry.diskStatus.[{#SNMPINDEX}])=4</expression>
+                                    <name>{#SNMPVALUE} partition damaged</name>
+                                    <priority>AVERAGE</priority>
+                                    <description>Partitions on the disk are damaged</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>2128c339329f43d1bca031e5c70f954e</uuid>
+                            <name>{#SNMPVALUE} Temperature</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.2.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>synoDisk.diskTable.diskEntry.diskTemperature.[{#SNMPINDEX}]</key>
+                            <units>C</units>
+                            <description>Synology disk temperature: the temperature of each disk uses Celsius degree.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Disk</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>b43b70d6de3e4ccd9dfc62b580b2de78</uuid>
+                                    <expression>avg(/Rus Synology DiskStation/synoDisk.diskTable.diskEntry.diskTemperature.[{#SNMPINDEX}],#4)&gt;60</expression>
+                                    <name>{#SNMPVALUE} temperature</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>a2d9899c31124f9489708038b1d7e543</uuid>
+                            <name>{#SNMPVALUE} Type</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.2.1.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>synoDisk.diskTable.diskEntry.diskType.[{#SNMPINDEX}]</key>
+                            <delay>1d</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <description>Synology disk type: the type of disk will be showed here, including SATA, SSD and so on.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Disk</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>fb46a95187c845c9a6ac93d6e531b9c0</uuid>
+                            <name>Temperature: Disk {#SNMPVALUE}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <drawtype>FILLED_REGION</drawtype>
+                                    <color>2774A4</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>synoDisk.diskTable.diskEntry.diskTemperature.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>3333FF</color>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>synoSystem.temperature</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>cc008d4c140349ccb7cea3010c9598a7</uuid>
+                    <name>Synology Disk(s) SMART</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.6574.5.1.1.2,{#ATTRNAME},.1.3.6.1.4.1.6574.5.1.1.3,{#ATTRID},.1.3.6.1.4.1.6574.5.1.1.4,{#ATTRCURRENT},.1.3.6.1.4.1.6574.5.1.1.5,{#ATTRWORST},.1.3.6.1.4.1.6574.5.1.1.6,{#ATTRTHRESHOLD},.1.3.6.1.4.1.6574.5.1.1.7,{#ATTRRAW},.1.3.6.1.4.1.6574.5.1.1.8,{#ATTRSTATUS},.1.3.6.1.4.1.6574.5.1.1.9]</snmp_oid>
+                    <key>synologyDiskSMART.diskSMARTTable.diskSMARTEntry</key>
+                    <delay>1h</delay>
+                    <description>An entry containing a disk SMART information.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>46d19451821d41ada5517acea9eff282</uuid>
+                            <name>{#ATTRNAME} on {#SNMPVALUE}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.5.1.1.9.{#SNMPINDEX}</snmp_oid>
+                            <key>synologyDiskSMART.diskSMARTTable.diskSMARTEntry.[{#SNMPINDEX}]</key>
+                            <delay>1h</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Disk SMART</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>d9121ba10d894e2998b88875e7b3697d</uuid>
+                                    <expression>(last(/Rus Synology DiskStation/synologyDiskSMART.diskSMARTTable.diskSMARTEntry.[{#SNMPINDEX}],#1)&lt;&gt;last(/Rus Synology DiskStation/synologyDiskSMART.diskSMARTTable.diskSMARTEntry.[{#SNMPINDEX}],#2))&gt;0</expression>
+                                    <name>Disk SMART attribute {#ATTRNAME} state was changed on {#SNMPVALUE}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>10bc114adb524dc3a41e1135580d56cc</uuid>
+                    <name>Synology iSCSI LUN</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#LUNINDEX},.1.3.4.1.4.1.6574.104.1.1.1,{#LUNUID},.1.3.4.1.4.1.6574.104.1.1.2,{#LUNNAME},.1.3.4.1.4.1.6574.104.1.1.3]</snmp_oid>
+                    <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry</key>
+                    <delay>1h</delay>
+                    <description>An entry containing iscsi lun information.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>634ff65ef9b645f6b7e22d0211b9e3b5</uuid>
+                            <name>Disk Latency Read on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.10.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNDiskLatencyRead[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <description>LUN read disk latency.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>ab4e5b7cd47445ff8f1ed9304051563f</uuid>
+                            <name>Disk Latency Write on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.11.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNDiskLatencyWrite[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <description>LUN write disk latency.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>4decc07717734d0588fe53949eef7dd9</uuid>
+                            <name>IOPS Read on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.8.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNIopsRead[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>iops</units>
+                            <description>LUN read iops.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>946b749bb38646328555c9fa4199a30d</uuid>
+                            <name>IOPS Write on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.9.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNIopsWrite[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>iops</units>
+                            <description>LUN write iops.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>5dadb1e9c5a84b6daae30b3a13fc8036</uuid>
+                            <name>IO Size Read on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.14.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNIoSizeRead[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>LUN average io size when reading.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>055643f0938147ba84fc8230d3891b7e</uuid>
+                            <name>IO Size Write on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.15.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNIoSizeWrite[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <description>LUN average io size when writing.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>45b3bcd46a93411d8398d9922393119f</uuid>
+                            <name>Network Latency TX on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.12.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNNetworkLatencyTx[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>ms</units>
+                            <description>LUN network tx latency.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>5046a5114f3f419096c877ebf4f4e312</uuid>
+                            <name>Throughput Read High on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.4.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNThroughputReadHigh[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>bps</units>
+                            <description>LUN read throughput over 32 bits part.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>554d45f7632341d486878cb715be817e</uuid>
+                            <name>Throughput Read Low on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.5.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNThroughputReadLow[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>bps</units>
+                            <description>LUN read throughput over 32 bits part.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>19abf3cc7cbd4417b6dac751d76e2730</uuid>
+                            <name>Throughput Write High on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.6.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNThroughputWriteHigh[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>bps</units>
+                            <description>The higher 32 bit of write throughput.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>a74861d2c7584977a363ccdbd175a709</uuid>
+                            <name>Throughput Write Low on LUN {#LUNNAME} ({#LUNUID})</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.4.1.4.1.6574.104.1.1.7.[{#LUNINDEX}]</snmp_oid>
+                            <key>synologyiSCSILUN.iSCSILUNTable.iSCSILUNEntry.iSCSILUNThroughputWriteLow[{#LUNINDEX}]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>bps</units>
+                            <description>The lower 32 bit of write throughput.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology iSCSI LUN</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>accc2d63ba3d4b5eb380263ac7c796b0</uuid>
+                    <name>Synology Service(s)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.6574.6.1.1.2]</snmp_oid>
+                    <key>synologyService.serviceTable.serviceEntry</key>
+                    <delay>1h</delay>
+                    <description>An entry containing Service information.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>134a32937dd84c1f9707d98c3ca4590b</uuid>
+                            <name>{#SNMPVALUE} Users</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.6.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>synologyService.serviceTable.serviceEntry.serviceUsers.[{#SNMPINDEX}]</key>
+                            <units>user(s)</units>
+                            <description>Number of users using this service.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology Services</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>2d68532bbb1745bb8a21e0b967f38f36</uuid>
+                            <name>Service: {#SNMPVALUE} Users</name>
+                            <show_triggers>NO</show_triggers>
+                            <ymin_type_1>ITEM</ymin_type_1>
+                            <ymin_item_1>
+                                <host>Rus Synology DiskStation</host>
+                                <key>synologyService.serviceTable.serviceEntry.serviceUsers.[{#SNMPINDEX}]</key>
+                            </ymin_item_1>
+                            <ymax_type_1>ITEM</ymax_type_1>
+                            <ymax_item_1>
+                                <host>Rus Synology DiskStation</host>
+                                <key>synologyService.serviceTable.serviceEntry.serviceUsers.[{#SNMPINDEX}]</key>
+                            </ymax_item_1>
+                            <graph_items>
+                                <graph_item>
+                                    <color>0000EE</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Rus Synology DiskStation</host>
+                                        <key>synologyService.serviceTable.serviceEntry.serviceUsers.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <uuid>c3711376bd4f44a396888c6d9d715569</uuid>
+                    <name>Synology RAID Volume(s)</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#SNMPVALUE},.1.3.6.1.4.1.6574.3.1.1.2]</snmp_oid>
+                    <key>synoRaid.raidTable.raidEntry</key>
+                    <delay>1h</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>46b1b67cb8b041e996c6a4e8a6d0efdb</uuid>
+                            <name>{#SNMPVALUE} RAID Name</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.3.1.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>synoRaid.raidTable.raidEntry.raidName.[{#SNMPINDEX}]</key>
+                            <delay>1d</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <description>Synology raid name: the name of each raid will be showed here.</description>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology RAID</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>9578a9400bde447da90cf5ee217c655e</uuid>
+                            <name>{#SNMPVALUE} RAID Status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.4.1.6574.3.1.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>synoRaid.raidTable.raidEntry.raidStatus.[{#SNMPINDEX}]</key>
+                            <delay>3m</delay>
+                            <description>Synology Raid status: each meanings of status represented describe below:
+[1] Normal: the raid functions normally.
+[11] Degrade: degrade happens when a tolerable failure of disk(s) occurs.
+[12] Crashed: raid has crashed and just uses for read-only operation.
+
+Note: other status will be showed when creating or deleting raids, including below status:
+[2] Repairing,
+[3] Migrating,
+[4] Expanding, 
+[5] Deleting,
+[6] Creating(6),
+[7] RaidSyncing,
+[8] RaidParityChecking,
+[9] RaidAssembling and
+[10] Canceling.</description>
+                            <valuemap>
+                                <name>SYNOLOGY-RAID-MIB::raidStatus</name>
+                            </valuemap>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Synology RAID</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>5477ff1d1f2c47dfbfb938169ec9f731</uuid>
+                                    <expression>last(/Rus Synology DiskStation/synoRaid.raidTable.raidEntry.raidStatus.[{#SNMPINDEX}])&gt;1 and last(/Rus Synology DiskStation/synoRaid.raidTable.raidEntry.raidStatus.[{#SNMPINDEX}])&lt;11</expression>
+                                    <name>Raid status on {HOSTNAME}: abnormal</name>
+                                    <priority>WARNING</priority>
+                                    <description>Repairing(2)
+Migrating(3)
+Expanding(4)
+Deleting(5)
+Creating(6)
+RaidSyncing(7)
+RaidParityChecking(8)
+RaidAssembling(9)
+Canceling(10)</description>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <uuid>1192b77fa9c6464fa60e82d774d0f9ba</uuid>
+                                    <expression>last(/Rus Synology DiskStation/synoRaid.raidTable.raidEntry.raidStatus.[{#SNMPINDEX}])=12</expression>
+                                    <name>Raid status on {HOSTNAME}: crashed</name>
+                                    <priority>HIGH</priority>
+                                    <description>RAID has crashed and is now read-only.</description>
+                                </trigger_prototype>
+                                <trigger_prototype>
+                                    <uuid>2a9c87888a914fab8a75c0fb70b59dbd</uuid>
+                                    <expression>last(/Rus Synology DiskStation/synoRaid.raidTable.raidEntry.raidStatus.[{#SNMPINDEX}])=11</expression>
+                                    <name>Raid status on {HOSTNAME}: degrade</name>
+                                    <priority>AVERAGE</priority>
+                                    <description>Degrade is shown when a tolerable failure of disk(s) occurs.</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$DISK_UTIL_HIGH}</macro>
+                    <value>90</value>
+                </macro>
+                <macro>
+                    <macro>{$DISK_UTIL_WARN}</macro>
+                    <value>80</value>
+                </macro>
+            </macros>
+            <valuemaps>
+                <valuemap>
+                    <uuid>3a17c5b68b454649893d7e32f0c55db7</uuid>
+                    <name>SYNOLOGY-DISK-MIB::diskStatus</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Normal</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>Initialized</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>3</value>
+                            <newvalue>Not Initialized</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>4</value>
+                            <newvalue>System Partition Failed</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>5</value>
+                            <newvalue>Crashed</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+                <valuemap>
+                    <uuid>9257948aeb2b4d9d82816b00d38eb0a3</uuid>
+                    <name>SYNOLOGY-RAID-MIB::raidStatus</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Normal</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>Repairing</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>3</value>
+                            <newvalue>Migrating</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>4</value>
+                            <newvalue>Expanding</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>5</value>
+                            <newvalue>Deleting</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>6</value>
+                            <newvalue>Creating</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>7</value>
+                            <newvalue>Raid Syncing</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>8</value>
+                            <newvalue>Raid Parity Checking</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>9</value>
+                            <newvalue>Raid Assembling</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>10</value>
+                            <newvalue>Canceling</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>11</value>
+                            <newvalue>Degraded</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>12</value>
+                            <newvalue>Crashed</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+                <valuemap>
+                    <uuid>afdf475a79c74b05909e622376f2bfd0</uuid>
+                    <name>SYNOLOGY-SYSTEM-MIB::powerStatus</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Normal</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>Failed</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+                <valuemap>
+                    <uuid>1ce7265bf0424e3cad1cb8a87012afa0</uuid>
+                    <name>SYNOLOGY-SYSTEM-MIB::systemStatus</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Normal</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>Failed</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+                <valuemap>
+                    <uuid>b8b5468ab72e473d842f63b653d5d431</uuid>
+                    <name>SYNOLOGY-SYSTEM-MIB::upgradeAvailable</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>Available</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>Unavailable</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>3</value>
+                            <newvalue>Connecting</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>4</value>
+                            <newvalue>Disconnected</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>5</value>
+                            <newvalue>Others</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+            </valuemaps>
+        </template>
+    </templates>
+    <graphs>
+        <graph>
+            <uuid>5a869a677b254629825e145277b54173</uuid>
+            <name>Подкачка памяти</name>
+            <width>600</width>
+            <height>340</height>
+            <yaxismax>0</yaxismax>
+            <show_work_period>NO</show_work_period>
+            <show_triggers>NO</show_triggers>
+            <type>EXPLODED</type>
+            <show_3d>YES</show_3d>
+            <graph_items>
+                <graph_item>
+                    <color>A54F10</color>
+                    <calc_fnc>LAST</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>ucdavis.memory.memTotalSwap</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>2774A4</color>
+                    <calc_fnc>LAST</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>ucdavis.memory.memAvailSwap</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>7047bceded544c67ade37f095a519a05</uuid>
+            <name>Температура системы</name>
+            <graph_items>
+                <graph_item>
+                    <color>2774A4</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>synoSystem.temperature</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>68b0ec1cb01c4c5c838e288db0866691</uuid>
+            <name>Физическая память</name>
+            <width>600</width>
+            <height>340</height>
+            <yaxismax>0</yaxismax>
+            <show_work_period>NO</show_work_period>
+            <show_triggers>NO</show_triggers>
+            <type>EXPLODED</type>
+            <show_3d>YES</show_3d>
+            <graph_items>
+                <graph_item>
+                    <color>6C59DC</color>
+                    <calc_fnc>LAST</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>ucdavis.memory.memTotalReal</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>EEEE00</color>
+                    <calc_fnc>LAST</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>ucdavis.memory.memAvailReal</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>22fe43ffac72474bb67f4010cb2b3c4b</uuid>
+            <name>ЦП</name>
+            <height>300</height>
+            <graph_items>
+                <graph_item>
+                    <color>1A7C11</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>synoSystem.ssCpuIdle</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <color>F63100</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>synoSystem.ssCpuSystem</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <color>2774A4</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Rus Synology DiskStation</host>
+                        <key>synoSystem.ssCpuUser</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
